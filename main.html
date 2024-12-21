@@ -4,11 +4,49 @@
 
 <head>
 	<link rel="stylesheet" href="styles.css">
+	<style>
+		body {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.code-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.code {
+    width: 30px;
+}
+	</style>
+		
 </head>
 
 <body>
+	<h1 id="verification_heading">OTP Verification</h1>
+<p id="verification_subtext">Please type the verification code sent to your mobile number</p>
+<div class="code-container">
+    <input type="text" maxlength="1" class="code">
+    <input type="text" maxlength="1" class="code">
+    <input type="text" maxlength="1" class="code">
+    <input type="text" maxlength="1" class="code">
+    <input type="text" maxlength="1" class="code">
+    <input type="text" maxlength="1" class="code">
+</div>
 	<!-- the entire body must be written by student -->
     <script type="text/javascript" src="./script.js">
+		let inputs = Array.from(document.getElementsByClassName("code"));
+inputs.forEach((input, index) => {
+    input.addEventListener('keydown', (e) => {
+        if(e.key >= 0 && e.key <= 9) {
+            inputs[index].value = '';
+            setTimeout(() => inputs[index + 1]?.focus(), 10);
+        } else if(e.key === "Backspace") {
+            inputs[index - 1]?.focus();
+        }
+    });
+});
 </script>
 
 </body>
