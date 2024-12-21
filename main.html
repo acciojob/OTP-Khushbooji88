@@ -1,53 +1,26 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-	<style>
-		body {
-    text-align: center;
-    padding-top: 50px;
-}
-
-.code-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.code {
-    width: 30px;
-}
-	</style>
-		
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-	<h1 id="verification_heading">OTP Verification</h1>
-<p id="verification_subtext">Please type the verification code sent to your mobile number</p>
-<div class="code-container">
-    <input type="text" maxlength="1" class="code">
-    <input type="text" maxlength="1" class="code">
-    <input type="text" maxlength="1" class="code">
-    <input type="text" maxlength="1" class="code">
-    <input type="text" maxlength="1" class="code">
-    <input type="text" maxlength="1" class="code">
-</div>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript">
-		let inputs = Array.from(document.getElementsByClassName("code"));
-inputs.forEach((input, index) => {
-    input.addEventListener('keydown', (e) => {
-        if(e.key >= 0 && e.key <= 9) {
-            inputs[index].value = '';
-            setTimeout(() => inputs[index + 1]?.focus(), 10);
-        } else if(e.key === "Backspace") {
-            inputs[index - 1]?.focus();
-        }
-    });
-});
-</script>
-</body>
+    <div class="otp-container">
+        <h1 id="verification_heading">OTP Verification</h1>
+        <p id="verification_subtext">Please enter the 6-digit OTP sent to your phone.</p>
 
+        <div class="code-container">
+            <input type="text" class="code" maxlength="1" id="otp1" oninput="moveFocus(this, 'otp2')" onkeydown="handleBackspace(event, 'otp1')" />
+            <input type="text" class="code" maxlength="1" id="otp2" oninput="moveFocus(this, 'otp3')" onkeydown="handleBackspace(event, 'otp2')" />
+            <input type="text" class="code" maxlength="1" id="otp3" oninput="moveFocus(this, 'otp4')" onkeydown="handleBackspace(event, 'otp3')" />
+            <input type="text" class="code" maxlength="1" id="otp4" oninput="moveFocus(this, 'otp5')" onkeydown="handleBackspace(event, 'otp4')" />
+            <input type="text" class="code" maxlength="1" id="otp5" oninput="moveFocus(this, 'otp6')" onkeydown="handleBackspace(event, 'otp5')" />
+            <input type="text" class="code" maxlength="1" id="otp6" onkeydown="handleBackspace(event, 'otp6')" />
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
