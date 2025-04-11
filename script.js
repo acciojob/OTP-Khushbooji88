@@ -1,27 +1,36 @@
 //your JS code here. If required.
-function moveFocus(currentInput, nextInputId) {
-    if (currentInput.value.length === 1) {
-        const nextInput = document.getElementById(nextInputId);
-        if (nextInput) {
-            nextInput.focus();
-        }
-    }
-}
+const inputs = document.querySelectorAll(".code");
 
-function handleBackspace(event, currentInputId) {
-    if (event.key === "Backspace") {
-        const currentInput = document.getElementById(currentInputId);
-        if (currentInput.value === '') {
-            const previousInput = document.getElementById(getPreviousInputId(currentInputId));
-            if (previousInput) {
-                previousInput.focus();
-            }
-        }
-    }
-}
+inputs[0].focus();
 
-function getPreviousInputId(currentInputId) {
-    const inputs = ['otp1', 'otp2', 'otp3', 'otp4', 'otp5', 'otp6'];
-    const currentIndex = inputs.indexOf(currentInputId);
-    return currentIndex > 0 ? inputs[currentIndex - 1] : null;
-}
+inputs.forEach((input, index) => {
+  input.addEventListener("input", (e) => {
+    const value = e.target.value;
+
+    if (value.length > 1) {
+      e.target.value = value.charAt(0);
+    }
+
+    if (value !== "") {
+      if (index < inputs.length - 1) {
+        inputs[index + 1].focus();
+      }
+    }
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Backspace") {
+      if (e.target.value === "") {
+        if (index > 0) {
+          inputs[index - 1].focus();
+        }
+      } else {
+        e.target.value = "";
+      }
+    } else if (e.key >= "0" && e.key <= "9") {
+      // Allow numeric keys
+    } else if (e.key !== "Tab") {
+      e.preventDefault();
+    }
+  });
+});

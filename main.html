@@ -7,19 +7,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="otp-container">
-        <h1 id="verification_heading">OTP Verification</h1>
-        <p id="verification_subtext">Please enter the six digit OTP sent to acciojob@email.com Enter the code below to confirm your email address.</p>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OTP Verification</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2 id="verification_heading">Verify Your Account</h2>
+    <p id="verification_subtext">Please enter the 6-digit OTP sent to your registered email or phone number.</p>
 
-        <div class="code-container">
-            <input type="text" class="code" maxlength="1" id="otp1" oninput="moveFocus(this, 'otp2')" onkeydown="handleBackspace(event, 'otp1')" />
-            <input type="text" class="code" maxlength="1" id="otp2" oninput="moveFocus(this, 'otp3')" onkeydown="handleBackspace(event, 'otp2')" />
-            <input type="text" class="code" maxlength="1" id="otp3" oninput="moveFocus(this, 'otp4')" onkeydown="handleBackspace(event, 'otp3')" />
-            <input type="text" class="code" maxlength="1" id="otp4" oninput="moveFocus(this, 'otp5')" onkeydown="handleBackspace(event, 'otp4')" />
-            <input type="text" class="code" maxlength="1" id="otp5" oninput="moveFocus(this, 'otp6')" onkeydown="handleBackspace(event, 'otp5')" />
-            <input type="text" class="code" maxlength="1" id="otp6" onkeydown="handleBackspace(event, 'otp6')" />
-        </div>
+    <div class="code-container">
+      <input type="text" maxlength="1" class="code" id="code-1">
+      <input type="text" maxlength="1" class="code" id="code-2">
+      <input type="text" maxlength="1" class="code" id="code-3">
+      <input type="text" maxlength="1" class="code" id="code-4">
+      <input type="text" maxlength="1" class="code" id="code-5">
+      <input type="text" maxlength="1" class="code" id="code-6">
     </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
 
     <script src="script.js"></script>
 </body>
